@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     namespace: default
-    server: https://aws-dkp-apiserver-714779767.us-west-2.elb.amazonaws.com:6443
+    server: https://aws-dkp-apiserver-1717167348.us-west-2.elb.amazonaws.com:6443
   project: default
   source:
     directory:
