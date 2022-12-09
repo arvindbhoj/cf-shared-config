@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    codefresh.io/entity: internal-config
+    codefresh.io/internal: "true"
+  name: default
+spec:
+  destination:
+    namespace: default
+    server: https://15.235.38.150:6443
+  project: default
+  source:
+    directory:
+      include: '{all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/abcodefresh/*.yaml,runtimes/abcodefresh/**/*.yaml}'
+      recurse: true
+    path: resources
+    repoURL: https://github.com/arvindbhoj/cf-shared-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - allowEmpty=true
